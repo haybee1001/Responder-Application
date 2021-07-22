@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local1="clr-namespace:ResponderApp"
+             mc:Ignorable="d"
+             x:Class="ResponderApp.View.task">
+    
+    <ContentPage.BindingContext>
+        <local1:mviewmodel></local1:mviewmodel>
+    </ContentPage.BindingContext>
+
+    <ListView ItemsSource="{Binding Products}" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout BackgroundColor="red">
+                        <Grid RowDefinitions="1*, 1.5*,1.5*" ColumnDefinitions="1.5*, 1.5*, 1.5*">
+                            <Image Grid.Column="1" VerticalOptions="Center" Source="{Binding ImageUrl}"/>
+                            <Label Grid.Column="1" Text="{Binding ProductName}" FontAttributes="Bold" VerticalOptions="Center" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" VerticalOptions="Start" FontAttributes="Italic" />
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Charges}" FontAttributes="Bold" VerticalOptions="Start" />
+                            <Image Source="{Binding ColImage}" Grid.Row="2" Grid.Column="2"></Image>
+                            <Image Source="{Binding ExpImage}" Grid.Row="2" Grid.Column="2"></Image>
+                        </Grid>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    
+</ContentPage>
+     

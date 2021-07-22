@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="ResponderApp.CarsPage" BackgroundColor="Pink">
+
+    <StackLayout>
+        
+    <SearchBar Margin="30,10,30,0" x:Name="MainsearchBar" TextChanged="searchbar_textchanged"></SearchBar>
+
+    <ListView ItemsSource="{Binding Items}" x:Name="CarsListView"
+              CachingStrategy="RecycleElement"
+              RowHeight="80" HorizontalScrollBarVisibility="Always" Margin="20">
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                   
+                        <pancakeview:PancakeView BackgroundColor="White" Margin="10,5,10,0"  Padding="10" CornerRadius="10" Grid.Row="1" >
+                            <!--<pancakeview:PancakeView.Shadow>
+                                <pancakeview:DropShadow Color="Red"/>
+                            </pancakeview:PancakeView.Shadow>-->
+
+                            <Grid RowDefinitions="Auto,Auto,Auto">
+                                <Grid ColumnDefinitions="Auto,Auto,*">
+                                    <Image Source="hollow.png" WidthRequest="10" HeightRequest="10"/>
+                                    <Label Text="{Binding Make}" Grid.Column="1" FontSize="16" FontAttributes="Bold" TextColor="Black"></Label>
+                                    <Label Text="{Binding YearOfModel}" Grid.Column="2" HorizontalOptions="End"></Label>
+                                </Grid>
+                                <Grid  Grid.Row="1" Padding="20,0,0,0">
+                                    <Label Text="No Supply at GRA"></Label>
+                                    <Label Text="Hello" Grid.Column="1" HorizontalOptions="End"></Label>
+                                </Grid>
+                            </Grid>
+
+
+                        </pancakeview:PancakeView>
+                  
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+    </ListView>
+    </StackLayout>
+</ContentPage>

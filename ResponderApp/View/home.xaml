@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:pk="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ResponderApp.View.home" NavigationPage.HasNavigationBar="False" BackgroundColor="Transparent" >
+
+    <Grid RowDefinitions="250, Auto, Auto, *" VerticalOptions="Center" HorizontalOptions="Center">
+        <yummy:PancakeView BackgroundColor="#1976D2" CornerRadius="0,0,60,0">
+            
+            <Grid ColumnDefinitions="Auto, *">
+                <Grid RowDefinitions="Auto, Auto" Padding="25,40,25,25" Grid.Column="0">
+                    <Label Text="Hello," Grid.Row="0" FontSize="20" TextColor ="White"></Label>
+                    <Label Text="Uche Anyalewechi" Grid.Row="1" FontSize="25" TextColor ="White" FontAttributes="Bold"></Label>
+                </Grid>
+                <StackLayout HorizontalOptions="End" Grid.Column="1" Padding="25,40,25,25">
+                    <Frame CornerRadius="80" HasShadow="True"
+                       HeightRequest="40"
+                       WidthRequest="40"
+                       HorizontalOptions="Center"
+                       Padding="0"
+                       IsClippedToBounds="True">
+                        <Image Source="ab.jpg"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </yummy:PancakeView>
+
+        <StackLayout BackgroundColor="Transparent" Grid.Row="1" TranslationY="-50">
+            <Grid ColumnDefinitions="*,*" Padding="40,0,40,0" ColumnSpacing="20">
+                <yummy:PancakeView BackgroundColor="White" Padding="25,30,25,30" CornerRadius="20" TranslationY="-30">
+                    <yummy:PancakeView.Shadow>
+                        <yummy:DropShadow Color="Red"   />
+                    </yummy:PancakeView.Shadow>
+                    <Grid RowDefinitions="20,*">
+                        <StackLayout Grid.Row="0">
+                            <Grid ColumnDefinitions="20,*">
+                                <Image Source="hollow.png" WidthRequest="20" HeightRequest="20"/>
+                                <Label Grid.Column="1" FontSize="16">Assigned</Label>
+                            </Grid>
+                        </StackLayout>
+
+                        <Label Grid.Row="1" FontSize="35" FontAttributes="Bold" TextColor="#2E2E2E" Padding="10" HorizontalOptions="Center" xct:ShadowEffect.OffsetX="0.2" xct:ShadowEffect.OffsetY="0.1" xct:ShadowEffect.Color="WhiteSmoke">100</Label>
+                    </Grid>
+                </yummy:PancakeView>
+
+                <yummy:PancakeView BackgroundColor="White" Padding="25,25,25,25" Grid.Column="1" CornerRadius="20" TranslationY="-30">
+                    <yummy:PancakeView.Shadow>
+                        <yummy:DropShadow Color="Red"/>
+                    </yummy:PancakeView.Shadow>
+                    <Grid RowDefinitions="20,*">
+                        <StackLayout Grid.Row="0">
+                            <Grid ColumnDefinitions="20,*">
+                                <Image Source="hollow_green.png" HeightRequest="20" WidthRequest="20"></Image>
+                                <Label Grid.Column="1" FontSize="16">Resolved</Label>
+                            </Grid>
+                        </StackLayout>
+
+                        <Label Grid.Row="1" FontSize="35" FontAttributes="Bold" TextColor="#2E2E2E" Padding="10" HorizontalOptions="Center">65</Label>
+                    </Grid>
+                </yummy:PancakeView>
+            </Grid>
+            
+        </StackLayout>
+
+        <StackLayout Grid.Row="2" BackgroundColor="Transparent"  TranslationY="-40" >
+            <Grid ColumnDefinitions="Auto, *" Padding="25,0,25,0">
+                <Label Text="Most Recent Tasks" FontSize="18" FontAttributes="Bold" TextColor="black"></Label>
+                <StackLayout  Grid.Column="1">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapped"/>
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="View All" TextColor="#1976D2" FontSize="16" FontAttributes="None" HorizontalTextAlignment="Center" HorizontalOptions="End" xct:TouchEffect.Command="{Binding touch_command}"
+                           xct:TouchEffect.PressedScale="0.7"
+                           xct:TouchEffect.NativeAnimation="True"></Label>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+
+        <yummy:PancakeView Padding="0,0,0,5" BackgroundColor="Transparent" Grid.Row="3" TranslationY="-20">
+            <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+           
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto" Padding="15,0,15,10">
+                    <ListView ItemsSource="{Binding Items}"
+                           CachingStrategy="RecycleElement"
+                            RowHeight="75" HorizontalScrollBarVisibility="Never" Margin="0" SeparatorVisibility="None">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <yummy:PancakeView BackgroundColor="White" Margin="10,5,10,0"  Padding="10" CornerRadius="10" Grid.Row="1" >
+                                        <!--<pancakeview:PancakeView.Shadow>
+                                           <pancakeview:DropShadow Color="Red"/>
+                                        </pancakeview:PancakeView.Shadow>-->
+
+                                        <Grid RowDefinitions="Auto,Auto,Auto">
+                                            <Grid ColumnDefinitions="Auto,Auto,*">
+                                                <Image Source="hollow.png" WidthRequest="10" HeightRequest="10"/>
+                                                <Label Text="{Binding Maked}" Grid.Column="1" FontSize="16" FontAttributes="Bold" TextColor="Black"></Label>
+                                                <Label Text="{Binding YearOfModel}" Grid.Column="2" HorizontalOptions="End"></Label>
+                                            </Grid>
+                                            <Grid  Grid.Row="1" Padding="20,0,0,0">
+                                                <Label Text="No Supply at GRA"></Label>
+                                                <Label Text="21-09-2021" Grid.Column="1" HorizontalOptions="End"></Label>
+                                            </Grid>
+                                        </Grid>
+
+
+                                    </yummy:PancakeView>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+                </Grid>
+                
+            
+            </ScrollView>
+        </yummy:PancakeView>
+
+    </Grid>
+    
+</ContentPage>
