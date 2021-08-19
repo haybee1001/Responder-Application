@@ -17,18 +17,18 @@ namespace ResponderApp
         {
             InitializeComponent();
 
-            BindingContext = new CarsViewModel();
+            //BindingContext = new homeViewModel();
         }
 
         private void searchbar_textchanged(object sender, TextChangedEventArgs e)
         {
-            var container = BindingContext as CarsViewModel;
-            if (string.IsNullOrWhiteSpace(e.NewTextValue))
-                CarsListView.ItemsSource = container.Items;
-            else
-                CarsListView.ItemsSource = container.Items.Where(i =>  i.Make.ToLower().Contains(e.NewTextValue.ToLower()) );
+            //var container = BindingContext as CarsViewModel;
+            //if (string.IsNullOrWhiteSpace(e.NewTextValue))
+            //    CarsListView.ItemsSource = container.Items;
+            //else
+            //    CarsListView.ItemsSource = container.Items.Where(i =>  i.Make.ToLower().Contains(e.NewTextValue.ToLower()) );
 
-            CarsListView.EndRefresh();
+            //CarsListView.EndRefresh();
         }
     }
 }

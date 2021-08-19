@@ -16,15 +16,20 @@ namespace ResponderApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new menutab());
+            MainPage = new NavigationPage(new login());
+            // MainPage = new TaskDetails("Fault");
+            //MainPage = new TaskList();
+           // MainPage = new TrialPage();
         }
 
         protected override void OnStart()
         {
+
         }
 
         protected override void OnSleep()
         {
+
         }
 
         protected override void OnResume()

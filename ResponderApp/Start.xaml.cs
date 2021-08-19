@@ -11,39 +11,33 @@ using Xamarin.Forms.Xaml;
 namespace ResponderApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page4 : ContentPage
+    public partial class Start : ContentPage
     {
+
         public readonly IGoogleManager _googleManager;
 
         GoogleUser GoogleUser = new GoogleUser();
         public bool IsLogedIn { get; set; }
 
-        public Page4()
+        public Start()
         {
             _googleManager = DependencyService.Get<IGoogleManager>();
             InitializeComponent();
 
+
             MessagingCenter.Subscribe<Page, string[]>(this, "googleAuth", (sender, values) => {
                 username.Text = values[0];
-                profilepic.Source = values[1];
                 email.Text = values[2];
             });
 
-        }
-        async private void OnTapped(object sender, EventArgs e)
-        {
-        }
 
-        private void CheckUserLoggedIn()
-        {
-            
-        }
+            string data = email.Text.ToString();
 
-        public void logout_user(object sender, EventArgs e)
-        {
-            _googleManager.Logout();
-            IsLogedIn = false;
-            Navigation.PopAsync();
+            if(data == "ebash4cast@gmail.com" || data == "ebash4cast@googlemail.com")
+            {
+                DisplayAlert("It worked oo", "Yes", "Close");
+            }
+
         }
     }
 }

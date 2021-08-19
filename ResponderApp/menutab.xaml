@@ -4,14 +4,18 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:responderapp="clr-namespace:ResponderApp"
             mc:Ignorable="d"
-             x:Class="ResponderApp.menutab"           
+            x:Class="ResponderApp.menutab"           
             BarBackgroundColor="White"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"  NavigationPage.HasNavigationBar="False"
-            xmlns:responderapp1="clr-namespace:ResponderApp.View" android:TabbedPage.ToolbarPlacement="Bottom" android:TabbedPage.IsSwipePagingEnabled="False" >
+            xmlns:responderapp1="clr-namespace:ResponderApp.View" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" android:TabbedPage.ToolbarPlacement="Bottom" android:TabbedPage.IsSwipePagingEnabled="False" >
   <!--Pages can be added as references or inline-->
-            <responderapp1:home Title="Home" IconImageSource="homee.png" ></responderapp1:home>
-            <responderapp1:TaskList Title="Task" IconImageSource="task.png"></responderapp1:TaskList>
-            <responderapp:Page3 Title="My Board" IconImageSource="dashboard.png"></responderapp:Page3>
-            <responderapp:Page4 Title="Settings" IconImageSource="settingg.png"></responderapp:Page4>
-    
+
+              <!--<responderapp:index Title="FirstPage" IconImageSource="settingg.png"></responderapp:index>-->
+              <responderapp1:home Title="Home" IconImageSource="homee.png"></responderapp1:home>
+              <responderapp1:TaskList Title="Task" IconImageSource="task.png"></responderapp1:TaskList>
+              <responderapp:Page3 Title="My Board" IconImageSource="dashboard.png"></responderapp:Page3>
+              <responderapp:Page4 Title="Settings" IconImageSource="settingg.png"></responderapp:Page4>
+              
+                
+            
 </TabbedPage>

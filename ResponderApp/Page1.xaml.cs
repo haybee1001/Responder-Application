@@ -15,7 +15,6 @@ namespace ResponderApp
         public Page1(String make)
         {
             InitializeComponent();
-
             mylabel1.Text = make;
         }
     }

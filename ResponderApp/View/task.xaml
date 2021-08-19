@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="ResponderApp.View.task">
     
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <local1:mviewmodel></local1:mviewmodel>
     </ContentPage.BindingContext>
 
@@ -27,7 +27,7 @@
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
-    </ListView>
+    </ListView>-->
     
 </ContentPage>
      

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "409333851551",
+    "project_id": "eedcmobileapp",
+    "storage_bucket": "eedcmobileapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409333851551:android:97c36c7ca595ddfcf049aa",
+        "android_client_info": {
+          "package_name": "com.companyname.responderapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409333851551-853e5671vvbglbiuqmeqmvsee33dnun4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.responderapp",
+            "certificate_hash": "cb2e6b905d654bf7a25f66215b4cda07a8003f89"
+          }
+        },
+        {
+          "client_id": "409333851551-7oalvdcou84sjrpft4vpclk83q6n8j85.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPNl7CeVxWFMazIW_AsWnF4A8246ozsrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409333851551-7oalvdcou84sjrpft4vpclk83q6n8j85.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

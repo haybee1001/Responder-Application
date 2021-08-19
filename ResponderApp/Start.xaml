@@ -4,14 +4,16 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="ResponderApp.Page1" NavigationPage.HasNavigationBar="False">
-    
+             x:Class="ResponderApp.Start">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to page1" FontSize="30"
+            <Label Text="Welcome to Xamarin.Forms!" x:Name="username"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"  x:Name="mylabel1"/>
+                HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Welcome to Xamarin.Forms!" x:Name="email"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
-    
 </ContentPage>

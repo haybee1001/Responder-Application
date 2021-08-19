@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             x:Class="ResponderApp.View.TaskDetails" NavigationPage.HasNavigationBar="false" BackgroundColor="White" >
+
+    <Grid RowDefinitions="250, 50, *" RowSpacing="0">
+
+
+        <StackLayout Grid.Row="0" BackgroundColor="Transparent">
+
+            <maps:Map x:Name="map"/>
+                <!--<StackLayout Grid.Column="0">
+                    <Image Source="back_button" WidthRequest="30" HeightRequest="30"></Image>
+                </StackLayout>
+                <StackLayout Grid.Column="1"  VerticalOptions="Center" HorizontalOptions="End" Padding="0,5,0,5">
+                    <Label Text="Back" FontSize="18" TextColor="White" ></Label>
+                </StackLayout>-->
+  
+        </StackLayout>
+        <StackLayout BackgroundColor="Transparent" HeightRequest="80" Opacity="0.9" TranslationY="0"  HorizontalOptions="Start" VerticalOptions="Start" Orientation="Horizontal" Padding="10,0,10,0">
+            <Image Source="left.png" HeightRequest="25" WidthRequest="25" xct:TouchEffect.NativeAnimation="True" xct:TouchEffect.NativeAnimationColor="#E6E8F0" xct:TouchEffect.Command="{Binding back_go}"  ></Image>
+            <Label Text="Back" FontAttributes="Bold" FontFamily="NormalFont" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Padding="0,0,0,0"></Label>
+        </StackLayout >
+
+        <pancakeview:PancakeView Grid.Row="1" Padding="15" VerticalOptions="Center" BackgroundColor="#1976D2" Margin="60,0,60,0" TranslationY="-20" CornerRadius="30">
+            <pancakeview:PancakeView.Shadow>
+                <pancakeview:DropShadow Color="Beige"   />
+            </pancakeview:PancakeView.Shadow>
+            <Label Text="Task Details" FontSize="18" TextColor="White" FontFamily="BoldFont" HorizontalOptions="Center" ></Label>
+        </pancakeview:PancakeView>
+
+        <StackLayout Grid.Row="2" >
+        <pancakeview:PancakeView BackgroundColor="Transparent" Padding="0" Margin="0" HorizontalOptions="Center"  CornerRadius="30,30,0,0" TranslationY="-15">
+            <Grid RowDefinitions="120, Auto, *">
+                <StackLayout Orientation="Vertical" Spacing="10" Margin="0,15,0,0">
+                    <Label Text="EEDC 20102" FontSize="18" TextColor="#303030" FontFamily="BoldFont" HorizontalOptions="Center" ></Label>
+                    <Label Text="No Supply at GRA" FontSize="14" TextColor="#303030" FontFamily="NormalFont" HorizontalOptions="Center" x:Name="mylabel1" ></Label>
+                    <Label Text="No 12 Kareem Street, Opposite Tanker, GRA" FontSize="14" TextColor="#303030" FontFamily="NormalFont" HorizontalOptions="Center" ></Label>
+                </StackLayout>
+                
+                <pancakeview:PancakeView Grid.Row="1" BackgroundColor="#F12A24" VerticalOptions="Center" HorizontalOptions="Center" Padding="10,10,10,10" CornerRadius="30" TranslationY="-10">
+                    <StackLayout Orientation="Horizontal"  VerticalOptions="Center">
+                        <Label Text="Call Reporter" FontSize="14" TextColor="White" FontFamily="BoldFont" VerticalOptions="Center"  HorizontalOptions="Center" Padding="20,0,20,0" ></Label>
+                        <Image Source="call.png" WidthRequest="25" HeightRequest="25" TranslationX="-17"></Image>
+                    </StackLayout>
+                </pancakeview:PancakeView>
+                
+                <pancakeview:PancakeView Grid.Row="2" BackgroundColor="Transparent" Padding="25,0,20,0" CornerRadius="10">
+                        <Grid RowDefinitions="200,*" BackgroundColor="Transparent" Padding="10,10,10,10" HorizontalOptions="Center"  TranslationY="-8">
+                        <StackLayout BackgroundColor="Transparent"  >
+                            <Grid ColumnDefinitions="Auto,Auto, Auto" HorizontalOptions="Center" ColumnSpacing="20">
+                                <pancakeview:PancakeView  BackgroundColor="White" Padding="20,20,20,20"  CornerRadius="60" xct:TouchEffect.NativeAnimationColor="black"  xct:TouchEffect.PressedScale="1"
+                                                          xct:TouchEffect.NativeAnimationRadius="10" xct:TouchEffect.PressedBackgroundColor="#dcdcdc" xct:TouchEffect.PressedOpacity="0.9" xct:TouchEffect.PressedBackgroundImageAspect="Fill">
+                                    <pancakeview:PancakeView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                    </pancakeview:PancakeView.GestureRecognizers>
+                                    <pancakeview:PancakeView.Shadow>
+                                        <pancakeview:DropShadow Color="OrangeRed"  Offset="1,10" />
+                                    </pancakeview:PancakeView.Shadow>
+                                    <Grid RowDefinitions="30,*">
+                                        <Image Source="navigate.png" WidthRequest="50" HeightRequest="50"></Image>
+                                        <Label Text="Navigate" FontSize="14" TextColor="Black" FontFamily="NormalFont" HorizontalOptions="Center" Grid.Row="1"></Label>
+                                    </Grid>
+                                </pancakeview:PancakeView>
+                                <pancakeview:PancakeView  Grid.Column="1" BackgroundColor="White" Padding="20,20,20,20"  CornerRadius="60" xct:TouchEffect.NativeAnimationColor="black"  xct:TouchEffect.PressedScale="1"
+                                                          xct:TouchEffect.NativeAnimationRadius="10" xct:TouchEffect.PressedBackgroundColor="#dcdcdc" xct:TouchEffect.PressedOpacity="0.9" xct:TouchEffect.PressedBackgroundImageAspect="Fill">
+                                    <pancakeview:PancakeView.Shadow>
+                                        <pancakeview:DropShadow Color="Beige"   />
+                                    </pancakeview:PancakeView.Shadow>
+                                    <Grid RowDefinitions="30,*">
+                                        <Image Source="work.png" WidthRequest="50" HeightRequest="50"></Image>
+                                        <Label Text="Start" FontSize="14" TextColor="Black" FontFamily="NormalFont" HorizontalOptions="Center" Grid.Row="1"></Label>
+                                    </Grid>
+                                </pancakeview:PancakeView>
+                                <pancakeview:PancakeView  Grid.Column="2" BackgroundColor="White" Padding="20,20,20,20"  CornerRadius="60" HorizontalOptions="End">
+                                    <pancakeview:PancakeView.Shadow>
+                                        <pancakeview:DropShadow Color="Beige"   />
+                                    </pancakeview:PancakeView.Shadow>
+                                    <Grid RowDefinitions="30,*">
+                                        <Image Source="close.png" WidthRequest="50" HeightRequest="50"></Image>
+                                        <Label Text="Close" FontSize="14" TextColor="Black" FontFamily="NormalFont" HorizontalOptions="Center" Grid.Row="1"></Label>
+                                    </Grid>
+                                </pancakeview:PancakeView>
+                            </Grid>
+                         
+                        </StackLayout>
+
+                    </Grid>
+                </pancakeview:PancakeView>
+            </Grid>
+        </pancakeview:PancakeView>
+        </StackLayout>
+
+    </Grid>
+    
+</ContentPage>

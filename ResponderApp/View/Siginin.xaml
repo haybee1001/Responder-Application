@@ -4,14 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="ResponderApp.Page1" NavigationPage.HasNavigationBar="False">
-    
+             x:Class="ResponderApp.View.Siginin">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to page1" FontSize="30"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"  x:Name="mylabel1"/>
+            <Button Text="Send Data" Clicked="isClicked"></Button>
         </StackLayout>
     </ContentPage.Content>
-    
 </ContentPage>

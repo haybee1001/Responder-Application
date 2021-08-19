@@ -2,16 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:pk="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             x:Class="ResponderApp.View.home" NavigationPage.HasNavigationBar="False" BackgroundColor="Transparent" >
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ResponderApp.index">
+
 
     <Grid RowDefinitions="250, Auto, Auto, *">
         <yummy:PancakeView BackgroundColor="#1976D2" CornerRadius="0,0,60,0" >
-            
+
             <Grid ColumnDefinitions="Auto, *">
                 <Grid RowDefinitions="Auto, Auto" Padding="25,40,25,25" Grid.Column="0">
                     <Label Text="Welcome!" Grid.Row="0" FontSize="30" FontAttributes="Bold" FontFamily="BoldFont"  TextColor ="White" x:Name="lblUri"></Label>
@@ -32,8 +32,6 @@
             </Grid>
         </yummy:PancakeView>
 
-  
-        
         <StackLayout BackgroundColor="Transparent" Grid.Row="1" TranslationY="-50">
             <Grid ColumnDefinitions="*,*" Padding="40,0,40,0" ColumnSpacing="20">
                 <yummy:PancakeView BackgroundColor="White" Padding="25,30,25,30" CornerRadius="20" TranslationY="-30">
@@ -68,7 +66,7 @@
                     </Grid>
                 </yummy:PancakeView>
             </Grid>
-            
+
         </StackLayout>
 
         <StackLayout Grid.Row="2" BackgroundColor="Transparent"  TranslationY="-20" >
@@ -87,35 +85,36 @@
 
         <yummy:PancakeView Padding="0,0,0,5" BackgroundColor="Transparent" Grid.Row="3" TranslationY="0">
             <RefreshView Refreshing="RefreshView_Refreshing" x:Name="listRefresher" >
-            <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-                <Grid RowDefinitions="Auto, Auto, Auto, Auto" Padding="15,0,15,10">
-                    <ListView ItemsSource="{Binding Items}"
+                <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                    <Grid RowDefinitions="Auto, Auto, Auto, Auto" Padding="15,0,15,10">
+                        <ListView ItemsSource="{Binding Items}"
                            CachingStrategy="RecycleElement"
                             RowHeight="75" HorizontalScrollBarVisibility="Never" Margin="0" SeparatorVisibility="None" x:Name="mylistview" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                        <yummy:PancakeView BackgroundColor="White" Margin="10,2,10,0"  Padding="10" CornerRadius="5" Grid.Row="1">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <yummy:PancakeView BackgroundColor="White" Margin="10,5,10,0"  Padding="10" CornerRadius="5" Grid.Row="1">
+
                                             <Grid RowDefinitions="Auto,Auto,Auto">
-                                            <Grid ColumnDefinitions="Auto,Auto,*">
-                                                <Image Source="hollow.png" WidthRequest="10" HeightRequest="10"/>
-                                                <Label Text="{Binding AssignedBy}" Grid.Column="1" FontSize="14" FontAttributes="Bold"  FontFamily="MediumFont" TextColor="Black"></Label>
-                                                <Label Text="{Binding Category}" Grid.Column="2" HorizontalOptions="End" FontFamily="NormalFont" FontSize="12" ></Label>
+                                                <Grid ColumnDefinitions="Auto,Auto,*">
+                                                    <Image Source="hollow.png" WidthRequest="10" HeightRequest="10"/>
+                                                    <Label Text="{Binding AssignedBy}" Grid.Column="1" FontSize="16" FontAttributes="Bold"  FontFamily="MediumFont" TextColor="Black"></Label>
+                                                    <Label Text="{Binding Category}" Grid.Column="2" HorizontalOptions="End" FontFamily="NormalFont"></Label>
+                                                </Grid>
+                                                <Grid  Grid.Row="1" Padding="15,0,0,0">
+                                                    <Label Text="No Supply at GRA" FontFamily="NormalFont" FontSize="14"></Label>
+                                                    <Label Text="21-09-2021" Grid.Column="1" FontFamily="LightFont" HorizontalOptions="End" FontSize="12"></Label>
+                                                </Grid>
                                             </Grid>
-                                            <Grid  Grid.Row="1" Padding="15,0,0,0">
-                                                <Label Text="No Supply at GRA" FontFamily="NormalFont" FontSize="12"></Label>
-                                                <Label Text="21-09-2021" Grid.Column="1" FontFamily="LightFont" HorizontalOptions="End" FontSize="12"></Label>
-                                            </Grid>
-                                        </Grid>
-                                    </yummy:PancakeView>
+                                        </yummy:PancakeView>
 
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                </Grid>
-            </ScrollView>
+                    </Grid>
+                </ScrollView>
             </RefreshView>
         </yummy:PancakeView>
 

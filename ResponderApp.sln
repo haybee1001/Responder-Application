@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponderApp.Android", "Res
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponderApp.iOS", "ResponderApp.iOS\ResponderApp.iOS.csproj", "{B2C36B42-1FA5-46C5-AF7F-CA38774E9F4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponderApp", "ResponderApp\ResponderApp.csproj", "{9236BAED-ED3C-40E4-92A9-7F22CDC11487}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResponderApp", "ResponderApp\ResponderApp.csproj", "{9236BAED-ED3C-40E4-92A9-7F22CDC11487}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,14 +2,61 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              mc:Ignorable="d"
-             x:Class="ResponderApp.Page4">
-    <ContentPage.Content>
+             x:Class="ResponderApp.Page4" BackgroundColor="WhiteSmoke">
+
+
+    <Grid>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid RowDefinitions="150,Auto,Auto,Auto">
+                <Grid ColumnDefinitions="50,*,50" Grid.Row="0" Padding="50,40,50,50" VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Grid.Column="1" TranslationY="30">
+                        <forms:AnimationView 
+                                x:Name="AnimationView" 
+                                Animation="profile.json" 
+                                AutoPlay="True"
+                                RepeatMode="Infinite"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand" HeightRequest="40" WidthRequest="40" />
+                         <Label Text="My Profile" TextColor="#3E3E3E" FontSize="23" FontFamily="BoldFont" TranslationY="0" VerticalOptions="Center" HorizontalOptions="Center" />
+                    </StackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="100,*,100" Grid.Row="1" Padding="25">
+                    <StackLayout Grid.Column="1">
+                        <Frame CornerRadius="80" HasShadow="True" 
+                               HeightRequest="150"
+                               WidthRequest="150"
+                               HorizontalOptions="Center"
+                               Padding="0"
+                               IsClippedToBounds="True">
+                               <Image Source="ab.jpg"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" x:Name="profilepic"/>
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="60,*,60" Grid.Row="2" Padding="25,0,25,0" TranslationY="-15">
+                    <StackLayout Grid.Column="1">
+                        <Label Text="Anikwenwa Ebenezer" FontSize="20" FontFamily="NormalFont" VerticalOptions="Center" HorizontalOptions="Center" x:Name="username"></Label>
+                        <Label Text="ebash4cast@gmail.com" FontSize="16" FontFamily="LightFont" HorizontalOptions="Center" x:Name="email"></Label>
+                    </StackLayout>
+                </Grid>
+                
+                <Grid ColumnDefinitions="100,*,100" Grid.Row="3" Padding="25">
+                    <pancakeview:PancakeView Grid.Column="1" BackgroundColor="#1976D2" CornerRadius="30" >
+                        <Button  FontAttributes="Bold" TextColor="White" Text="Logout" Clicked="logout_user" CornerRadius="30" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent"></Button>
+                    </pancakeview:PancakeView>
+                </Grid>
+
+            </Grid>
+         
         </StackLayout>
-    </ContentPage.Content>
+    </Grid>
+    
+    
 </ContentPage>

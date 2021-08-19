@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
-             x:Class="ResponderApp.View.login" BackgroundColor="#1976D2" Opacity="0.7">
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ResponderApp.View.login" BackgroundColor="#1976D2"  NavigationPage.HasNavigationBar="False">
     
     <ContentPage.Resources>
 
@@ -62,15 +63,16 @@
                 FontSize="20" TranslationX="-28"/>
 
             <pancakeview:PancakeView BackgroundColor="WhiteSmoke" CornerRadius="15,0,15,0" Grid.Row="1" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"
-                         Grid.ColumnSpan="2"
-                 TranslationX="19" TranslationY="-10">
+                         Grid.ColumnSpan="2" TranslationX="19" TranslationY="-10">
+                <pancakeview:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="googleButtonTapped"/>
+                </pancakeview:PancakeView.GestureRecognizers>
 
                 <pancakeview:PancakeView.Shadow>
                     <pancakeview:DropShadow Color="Black"/>
                 </pancakeview:PancakeView.Shadow>
-                
+
                 <Grid ColumnDefinitions="20,*" TranslationX="20" TranslationY="-3" Padding="20,8,10,5"  >
-                    <!--<Image Source="outage_icon.png" HeightRequest="30" WidthRequest="30" TranslationX="-20" ></Image>-->
                     <Image Source="https://developers.google.com/identity/images/g-logo.png" HeightRequest="30" WidthRequest="30" TranslationX="-20" ></Image>
                     <Label Text="Sign-In" FontSize="14" FontAttributes="None" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" TranslationX="-20"></Label>
                 </Grid>
@@ -103,8 +105,8 @@
                 Grid.Column="1"
                 Grid.ColumnSpan="2"                
                 Placeholder="Enter password"/>
-         
 
+         
             <Grid ColumnDefinitions="64"
                   RowDefinitions="64"
                   Grid.Column="1"
@@ -112,14 +114,21 @@
                   Grid.Row="6"
                   HorizontalOptions="Center"
                   VerticalOptions="End"
-                  Margin="0,0,0,13"> 
+                  Margin="0,0,0,13">
                 <Ellipse Fill="#222222" WidthRequest="50" HeightRequest="50" />
-                <Path x:Name="buttonpath"
+                <StackLayout xct:TouchEffect.NativeAnimation="True" xct:TouchEffect.NativeAnimationColor="black"  xct:TouchEffect.PressedScale="0.8" xct:TouchEffect.NativeAnimationRadius="10">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapped"/>
+                    </StackLayout.GestureRecognizers>
+                    <Path x:Name="buttonpath"
+                          TranslationY="20"
                     Fill="White"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Rotation="90"
                     Data="M15.6099294,11.0552456 L12.3765961,7.82357897 C12.2574176,7.70409826 12.0779382,7.66830385 11.9220434,7.73292537 C11.7661485,7.7975469 11.6646275,7.94982156 11.6649294,8.11857897 L11.6649294,21.2502456 C11.6649294,22.4008389 10.7321893,23.333579 9.58159609,23.333579 C8.43100286,23.333579 7.49826276,22.4008389 7.49826276,21.2502456 L7.49826276,8.11857897 C7.49789351,7.95055217 7.39663523,7.79918973 7.24146862,7.73471909 C7.08630201,7.67024846 6.90759527,7.70528741 6.78826276,7.82357897 L3.55492943,11.0552456 C2.74169013,11.8684849 1.42316875,11.8684849 0.609929471,11.0552456 C-0.203309806,10.2420063 -0.203309826,8.92348493 0.609929427,8.11024563 L8.10992943,0.610245632 C8.50036143,0.219527336 9.03007272,0 9.58242943,0 C10.1347861,0 10.6644974,0.219527336 11.0549294,0.610245632 L18.5549294,8.11024563 C19.3681687,8.92348493 19.3681687,10.2420063 18.5549294,11.0552456 C17.7416901,11.8684849 16.4231687,11.8684849 15.6099294,11.0552456 L15.6099294,11.0552456 Z"/>
+                </StackLayout>
+                
             </Grid>
 
         </Grid>

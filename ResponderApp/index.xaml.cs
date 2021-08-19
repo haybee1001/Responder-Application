@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using ResponderApp.Model;
+using ResponderApp.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ResponderApp.View
+namespace ResponderApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class home : ContentPage
+    public partial class index : ContentPage
     {
         public string useremail;
         public Command touch_command { get; }
@@ -31,41 +31,32 @@ namespace ResponderApp.View
         //public ObservableCollection<Car> Items { get; set; }
         public ObservableCollection<api> Items { get; set; }
 
-        public home()
-        {
 
+    
+        public index()
+        {
             InitializeComponent();
 
-            MessagingCenter.Subscribe<Page, string[]>(this, "googleAuth", (sender, values) => {
-                lblUser.Text = values[0];
-                profilePhoto.Source = values[1];
-                useremail = values[2];
-                if(useremail.Equals("ebash4cast@googlemail.com"))
-                { loadDataFromDb("A"); } else { loadDataFromDb("B"); }
-                
+            //MessagingCenter.Subscribe<Object, string>(this, "testdata", (arg, values) => {
+            //    lblUser.Text = values;
+            //});
+
+            MessagingCenter.Subscribe<Object, string>(this, "finish", (arg, source) =>
+            {
+                // capturedImage.Source = ImageSource.FromStream(() => source.GetStream());
+
+                string hello = source;
+
             });
 
 
-            //MessagingCenter.Subscribe<Page, string>(this, "Hi", (sender, values) =>
-            //{
-            //    lblAssigned.Text = values;
 
-            //    if(values == "Bobo Dey here oo")
-            //    {
-            //        loadDataFromDb();
-            //    }
-            //    else
-            //    {
-            //        DisplayAlert("Hello", "Conflict of Interest", "Close");
-            //    }
+            string data = lblUser.Text.ToString();
 
-            //});
-
-            string data = lblAssigned.Text;
-
-
-
-            //lblAssigned.Text = data;
+            if (data == "ebash4cast@gmail.com" || data == "ebash4cast@googlemail.com")
+            {
+                DisplayAlert("It worked oo", "Yes", "Close");
+            }
 
             //MessagingCenter.Subscribe<Page, string>(this, "xxx", (sender, values) =>
             //{
@@ -77,28 +68,26 @@ namespace ResponderApp.View
             //string[] emailAddress = { "ea@enugudisco.com", "bc@enugudisco.com" };
 
 
-            //loadDataFromDb();
+           // loadDataFromDb();
 
             Console.WriteLine("The value is:" + uname);
 
             //BindingContext = new homeViewModel();
 
-           // touch_command = new Command(() => clickCommand());
+            // touch_command = new Command(() => clickCommand());
 
-           // MessagingCenter.Subscribe<object, string>(this, "assignedPassed", (sender, values) => { lblAssigned.Text = values.ToString(); });
+            // MessagingCenter.Subscribe<object, string>(this, "assignedPassed", (sender, values) => { lblAssigned.Text = values.ToString(); });
 
         }
 
 
-
-        public async void loadDataFromDb(string grp)
+        public async void loadDataFromDb()
         {
-
             List<api> trackData = new List<api>();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://denceapp.somee.com/api/Incidence/GetAllAssignedTaskByGroup/");
-                var responseTask = client.GetAsync(grp);
+                var responseTask = client.GetAsync(usergroup);
 
                 responseTask.Wait();
 
@@ -111,10 +100,9 @@ namespace ResponderApp.View
                     Items = new ObservableCollection<api>(data);
 
                     mylistview.ItemsSource = Items;
-                   
+
                 }
 
-                lblAssigned.Text = assignedCount;
                 //MessagingCenter.Send<object, string>(this, "assignedPassed", assignedCount);
 
             }
@@ -138,7 +126,6 @@ namespace ResponderApp.View
 
             listRefresher.IsRefreshing = false;
         }
-
-       
     }
+    
 }
