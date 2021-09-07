@@ -14,6 +14,7 @@
 
 
     <Grid ColumnDefinitions="*,279,*" RowDefinitions="*,168,350,*" TranslationY="-30">
+       
         <Ellipse
             Grid.Row="1"
             Grid.Column="1"
@@ -24,14 +25,14 @@
             Stroke="#346EB4"
             StrokeThickness="10"
             Fill="White"/>
-        <Image
+        
+            <Image
             Grid.Row="1"
             Grid.Column="1"
             HorizontalOptions="Center"
             VerticalOptions="Center"
             WidthRequest="50"
             HeightRequest="50"
-            
             Source="loginuser.png">
             
             <Image.Clip>
@@ -90,7 +91,7 @@
                 Grid.Column="1"
                 Grid.ColumnSpan="2"                
                 Placeholder="Enter username"
-                Text="eanik@enugudisco.com"
+                Text="eanik@enugudisco.com" FontSize="14"
                 />
 
             <Label
@@ -104,7 +105,7 @@
                 Grid.Row="5"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"                
-                Placeholder="Enter password"/>
+                Placeholder="Enter password" FontSize="14"/>
 
          
             <Grid ColumnDefinitions="64"
@@ -116,6 +117,12 @@
                   VerticalOptions="End"
                   Margin="0,0,0,13">
                 <Ellipse Fill="#222222" WidthRequest="50" HeightRequest="50" />
+                <ActivityIndicator x:Name="activity"  
+                       IsRunning="False"  
+                       IsEnabled="False"  
+                       IsVisible="False"  
+                       Color="white" 
+                       BackgroundColor="Transparent"/>
                 <StackLayout xct:TouchEffect.NativeAnimation="True" xct:TouchEffect.NativeAnimationColor="black"  xct:TouchEffect.PressedScale="0.8" xct:TouchEffect.NativeAnimationRadius="10">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTapped"/>
@@ -138,12 +145,4 @@
 
     </Grid>
 </ContentPage>
-    
-           <!--<pancakeview:PancakeView Grid.Row="3" Grid.Column="1" Margin="0,,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" TranslationY="-60" BackgroundColor="White" CornerRadius="20" Padding="5,5,15,5">
-            <Grid RowDefinitions="*" VerticalOptions="Start" HorizontalOptions="Start" >
-                <Grid ColumnDefinitions="60,*" >
-                    <Image Source="https://developers.google.com/identity/images/g-logo.png" HeightRequest="30" ></Image>
-                    <Label Text="Google Sign-in" FontSize="18" FontAttributes="Bold" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" TranslationX="-10"></Label>
-                </Grid> 
-            </Grid>
-        </pancakeview:PancakeView>-->
+ 

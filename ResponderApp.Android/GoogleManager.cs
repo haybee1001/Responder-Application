@@ -70,7 +70,7 @@ namespace ResponderApp.Droid
 				{
 					Name = accountt.DisplayName,
 					Email = accountt.Email,
-					Picture = new Uri((accountt.PhotoUrl != null ? $"{accountt.PhotoUrl}" : $"https://autisticdating.net/imgs/profile-placeholder.jpg"))
+					Picture = new Uri((accountt.PhotoUrl != null ? $"{accountt.PhotoUrl}" : $"https://firebasestorage.googleapis.com/v0/b/issuemanagement-c7cec.appspot.com/o/incidence%2Floginuser.png?alt=media&token=6e2831b6-f43a-4e7f-adb4-c75c2368e5aa"))
 				}, string.Empty);
 			}
 			else
@@ -81,7 +81,7 @@ namespace ResponderApp.Droid
 
 		public void OnConnected(Bundle connectionHint)
 		{
-
+			
 		}
 
 		public void OnConnectionSuspended(int cause)

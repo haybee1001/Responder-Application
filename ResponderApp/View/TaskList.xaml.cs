@@ -2,6 +2,7 @@
 using ResponderApp.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -17,63 +18,71 @@ namespace ResponderApp.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaskList : ContentPage
     {
-        public List<api> Items { get; set; }
+        public string useremail;
+
+        public ObservableCollection<api> Items { get; set; }
 
         public TaskList()
         {
             InitializeComponent();
+
+
+            MessagingCenter.Subscribe<Page, string[]>(this, "googleAuth", (sender, values) =>
+            {
+                useremail = values[2];
+                if (useremail.Equals("ebash4cast@googlemail.com"))
+                { loadDataFromDb("A"); }
+                else { loadDataFromDb("B"); }
+
+            });
+
             BindingContext = new homeViewModel();
         }
 
+        public async void loadDataFromDb(string grp)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://denceapp.somee.com/api/Incidence/GetAllAssignedTaskByGroup/");
+                var responseTask = client.GetAsync(grp);
+
+                responseTask.Wait();
+
+                var res = responseTask.Result;
+                if (res.IsSuccessStatusCode)
+                {
+                    string readTask = await res.Content.ReadAsStringAsync();
+                    var data = JsonConvert.DeserializeObject<ObservableCollection<api>>(readTask);
+                    Items = new ObservableCollection<api>(data);
+
+                    generalList.ItemsSource = Items;
+
+                }
+            }
+        }
+
+
+
         private void searchbar_textchanged(object sender, TextChangedEventArgs e)
         {
-            var container = BindingContext as homeViewModel;
+            var container = BindingContext as homeViewModel.api;
 
             if (string.IsNullOrWhiteSpace(e.NewTextValue))
-                CarsListView.ItemsSource = container.Items;
+                generalList.ItemsSource = Items;
             else
-                CarsListView.ItemsSource = container.Items.Where(i => i.AssignedBy.ToLower().Contains(e.NewTextValue.ToLower()));
+                generalList.ItemsSource = Items.Where(i => i.AssignedBy.ToLower().Contains(e.NewTextValue.ToLower()));
 
-            CarsListView.EndRefresh();
+            generalList.EndRefresh();
         }
 
         async private void CarsListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var myselectedItem = e.Item as homeViewModel.api;
-
-            await Navigation.PushAsync( new TaskDetails(myselectedItem.incidence_id));
+            var myselectedItem = e.Item as api;
+            
+            await Navigation.PushAsync(new TaskDetails(myselectedItem.incidence_id, myselectedItem.lat_y, myselectedItem.Long_x, myselectedItem.ReporterName, myselectedItem.incidence_id));
 
             ((ListView)sender).SelectedItem = null;
-       
         }
-
-
-        //public async Task<List<api>> CarsViewModelss()
-        //{
-        //    string Baseurl = "https://denceapp.somee.com/";
-
-        //    Items = new List<api>();
-
-        //    using (var client = new HttpClient())
-        //    {
-
-        //        client.BaseAddress = new Uri(Baseurl);
-        //        client.DefaultRequestHeaders.Clear();
-
-        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-        //        HttpResponseMessage Res = await client.GetAsync("api/Incidence/GetAllAssignedTaskByGroup/A");
-
-        //        if (Res.IsSuccessStatusCode)
-        //        {
-        //            var dataResponse = Res.Content.ReadAsStringAsync().Result;
-
-        //            Items = JsonConvert.DeserializeObject<List<api>>(dataResponse);
-        //        }
-        //    }
-
-        //    return Items;
-        //}
 
         async private void back_OnTapped(object sender, EventArgs e)
         {

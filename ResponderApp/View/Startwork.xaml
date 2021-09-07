@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:e="clr-namespace:ResponderApp" 
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="ResponderApp.View.Startwork" BackgroundColor="#1976D2" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False">
+
+
+
+    <Grid RowDefinitions="200,Auto, *" RowSpacing="0">
+        <StackLayout>
+            
+        </StackLayout>
+
+        <StackLayout Grid.Row="1"  BackgroundColor="White">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTapped"/>
+            </StackLayout.GestureRecognizers>
+            <Grid ColumnDefinitions="*" RowDefinitions="*,auto" TranslationY="-65">
+                <Ellipse
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="120"
+                HeightRequest="120"
+                Stroke="#1976D2"
+                StrokeThickness="10"
+                Fill="White"/>
+
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="60"
+                    HeightRequest="60" 
+                    Source="camera.png">
+
+                    <Image.Clip>
+                        <EllipseGeometry
+                    Center="50,50"
+                    RadiusX="75"
+                    RadiusY="75"/>
+                    </Image.Clip>
+                </Image>
+
+                <Label Text="Capture Image" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="BoldFont" FontSize="18"></Label>
+            </Grid>
+        
+        </StackLayout>
+        
+        <StackLayout Grid.Row="2" BackgroundColor="White" >
+            <Grid RowDefinitions="*,*">
+                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Padding="50,0,50,0">
+                    <Grid RowDefinitions="*,45,*,45,*,45">
+                        <Label Text="Status" Grid.Row="0" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                        <pancakeview:PancakeView BackgroundColor="WhiteSmoke" CornerRadius="20" Padding="10,0,0,0" Grid.Row="1">
+                            <e:BorderlessPicker x:Name="PickType" Title="Select Type" FontSize="14" >
+                                <Picker.Items>
+                                    <x:String>Ongoing</x:String>
+                                    <x:String>Pending</x:String>
+                                </Picker.Items>
+                            </e:BorderlessPicker>
+                        </pancakeview:PancakeView>
+                        <Label Text="Why are you pending?" Grid.Row="2" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                        <pancakeview:PancakeView BackgroundColor="WhiteSmoke" Grid.Row="3" CornerRadius="20"  Padding="10,0,0,0">
+                            <e:BorderlessPicker x:Name="PickType1" Title="Select Type" FontSize="14" >
+                                <Picker.Items>
+                                    <x:String>No Material</x:String>
+                                    <x:String>Location not Found</x:String>
+                                </Picker.Items>
+                            </e:BorderlessPicker>
+                        </pancakeview:PancakeView>
+                        <Label Text="Description" Grid.Row="4" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                        <pancakeview:PancakeView BackgroundColor="WhiteSmoke" Grid.Row="5" CornerRadius="20"  Padding="10,0,0,0" HeightRequest="200" >
+                            <Entry Placeholder="Description" FontSize="14" x:Name="entDescription"></Entry>
+                        </pancakeview:PancakeView>
+
+                    </Grid>
+                </StackLayout>
+                  
+               
+                <StackLayout Grid.Row="1" VerticalOptions="Center" Padding="50">
+                    <Button Text="Send" CornerRadius="30" BackgroundColor="OrangeRed"></Button>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </Grid>
+    
+</ContentPage>

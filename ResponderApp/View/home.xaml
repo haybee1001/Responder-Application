@@ -6,8 +6,12 @@
              xmlns:pk="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:local="clr-namespace:ResponderApp"
              x:Class="ResponderApp.View.home" NavigationPage.HasNavigationBar="False" BackgroundColor="Transparent" >
+
+    <!--<ContentPage.BindingContext>
+        <local:homeViewModel />
+    </ContentPage.BindingContext>-->
 
     <Grid RowDefinitions="250, Auto, Auto, *">
         <yummy:PancakeView BackgroundColor="#1976D2" CornerRadius="0,0,60,0" >
@@ -36,7 +40,8 @@
         
         <StackLayout BackgroundColor="Transparent" Grid.Row="1" TranslationY="-50">
             <Grid ColumnDefinitions="*,*" Padding="40,0,40,0" ColumnSpacing="20">
-                <yummy:PancakeView BackgroundColor="White" Padding="25,30,25,30" CornerRadius="20" TranslationY="-30">
+                <yummy:PancakeView BackgroundColor="White" Padding="25,30,25,30" CornerRadius="15" TranslationY="-30"  xct:TouchEffect.NativeAnimationColor="black"  xct:TouchEffect.PressedScale="1"
+                                                          xct:TouchEffect.NativeAnimationRadius="30" xct:TouchEffect.PressedBackgroundColor="#dcdcdc" xct:TouchEffect.PressedOpacity="1" xct:TouchEffect.PressedBackgroundImageAspect="Fill">
                     <yummy:PancakeView.Shadow>
                         <yummy:DropShadow Color="Red"   />
                     </yummy:PancakeView.Shadow>
@@ -48,11 +53,12 @@
                             </Grid>
                         </StackLayout>
 
-                        <Label Grid.Row="1" FontSize="35" FontAttributes="Bold" FontFamily="BoldFont"  TextColor="#303030" Padding="10" HorizontalOptions="Center" xct:ShadowEffect.OffsetX="0.2" x:Name="lblAssigned">10</Label>
+                        <Label Grid.Row="1" FontSize="35" FontAttributes="Bold" FontFamily="BoldFont"  TextColor="#4D4D4D" Padding="10" HorizontalOptions="Center" xct:ShadowEffect.OffsetX="0.2" x:Name="lblAssigned">10</Label>
                     </Grid>
                 </yummy:PancakeView>
 
-                <yummy:PancakeView BackgroundColor="White" Padding="25,25,25,25" Grid.Column="1" CornerRadius="20" TranslationY="-30">
+                <yummy:PancakeView BackgroundColor="White" Padding="25,25,25,25" Grid.Column="1" CornerRadius="15" TranslationY="-30"  xct:TouchEffect.NativeAnimationColor="black"  xct:TouchEffect.PressedScale="1"
+                                                          xct:TouchEffect.NativeAnimationRadius="30" xct:TouchEffect.PressedBackgroundColor="#dcdcdc" xct:TouchEffect.PressedOpacity="1" xct:TouchEffect.PressedBackgroundImageAspect="Fill">
                     <yummy:PancakeView.Shadow>
                         <yummy:DropShadow Color="Red"/>
                     </yummy:PancakeView.Shadow>
@@ -64,7 +70,7 @@
                             </Grid>
                         </StackLayout>
 
-                        <Label Grid.Row="1" FontSize="35" FontAttributes="Bold" FontFamily="BoldFont"  TextColor="#303030" Padding="10" HorizontalOptions="Center">10</Label>
+                        <Label Grid.Row="1" FontSize="35" FontAttributes="Bold" FontFamily="BoldFont"  TextColor="#4D4D4D" Padding="10" HorizontalOptions="Center">70</Label>
                     </Grid>
                 </yummy:PancakeView>
             </Grid>
@@ -73,7 +79,7 @@
 
         <StackLayout Grid.Row="2" BackgroundColor="Transparent"  TranslationY="-20" >
             <Grid ColumnDefinitions="Auto, *" Padding="25,0,25,0">
-                <Label Text="Most Recent Tasks" FontSize="17" FontFamily="NormalFont"  FontAttributes="Bold" TextColor="#303030"></Label>
+                <Label Text="Most Recent Tasks" FontSize="15" FontFamily="NormalFont"  FontAttributes="Bold" TextColor="#303030"></Label>
                 <StackLayout  Grid.Column="1">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTapped"/>
@@ -91,25 +97,24 @@
                 <Grid RowDefinitions="Auto, Auto, Auto, Auto" Padding="15,0,15,10">
                     <ListView ItemsSource="{Binding Items}"
                            CachingStrategy="RecycleElement"
-                            RowHeight="75" HorizontalScrollBarVisibility="Never" Margin="0" SeparatorVisibility="None" x:Name="mylistview" >
+                            RowHeight="75" HorizontalScrollBarVisibility="Never" Margin="0" SeparatorVisibility="None" x:Name="mylistview" ItemTapped="mylistview_ItemTapped">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                        <yummy:PancakeView BackgroundColor="White" Margin="10,2,10,0"  Padding="10" CornerRadius="5" Grid.Row="1">
+                                        <yummy:PancakeView BackgroundColor="White" Margin="5,2,5,1"  Padding="10,15,10,10" CornerRadius="0" Grid.Row="1">
                                             <Grid RowDefinitions="Auto,Auto,Auto">
-                                            <Grid ColumnDefinitions="Auto,Auto,*">
-                                                <Image Source="hollow.png" WidthRequest="10" HeightRequest="10"/>
-                                                <Label Text="{Binding AssignedBy}" Grid.Column="1" FontSize="14" FontAttributes="Bold"  FontFamily="MediumFont" TextColor="Black"></Label>
-                                                <Label Text="{Binding Category}" Grid.Column="2" HorizontalOptions="End" FontFamily="NormalFont" FontSize="12" ></Label>
+                                                <Grid ColumnDefinitions="Auto,Auto,*">
+                                                    <Image Source="sphere.png" WidthRequest="10" HeightRequest="10"/>
+                                                    <Label Text="{Binding AssignedBy}" Grid.Column="1" FontSize="14" FontAttributes="Bold"  FontFamily="MediumFont" TextColor="#4D4D4D"></Label>
+                                                    <Label Text="{Binding Category}" Grid.Column="2" HorizontalOptions="End" FontFamily="NormalFont" FontSize="12" ></Label>
+                                                </Grid>
+                                                <Grid  Grid.Row="1" Padding="15,0,0,0">
+                                                    <Label Text="No Supply at GRA" FontFamily="LightFont" FontSize="12" TextColor="#1976D2"></Label>
+                                                    <Label Text="21-09-2021" Grid.Column="1" FontFamily="LightFont" HorizontalOptions="End" FontSize="12"></Label>
+                                                </Grid>
                                             </Grid>
-                                            <Grid  Grid.Row="1" Padding="15,0,0,0">
-                                                <Label Text="No Supply at GRA" FontFamily="NormalFont" FontSize="12"></Label>
-                                                <Label Text="21-09-2021" Grid.Column="1" FontFamily="LightFont" HorizontalOptions="End" FontSize="12"></Label>
-                                            </Grid>
-                                        </Grid>
-                                    </yummy:PancakeView>
-
-                                </ViewCell>
+                                        </yummy:PancakeView>
+                                    </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

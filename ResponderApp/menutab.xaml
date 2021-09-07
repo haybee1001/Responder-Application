@@ -13,7 +13,7 @@
               <!--<responderapp:index Title="FirstPage" IconImageSource="settingg.png"></responderapp:index>-->
               <responderapp1:home Title="Home" IconImageSource="homee.png"></responderapp1:home>
               <responderapp1:TaskList Title="Task" IconImageSource="task.png"></responderapp1:TaskList>
-              <responderapp:Page3 Title="My Board" IconImageSource="dashboard.png"></responderapp:Page3>
+              <responderapp1:Board Title="My Board" IconImageSource="dashboard.png"></responderapp1:Board>
               <responderapp:Page4 Title="Settings" IconImageSource="settingg.png"></responderapp:Page4>
               
                 

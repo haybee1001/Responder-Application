@@ -20,7 +20,7 @@ namespace ResponderApp
 
         public event PropertyChangedEventHandler PropertyChanged;
         public string assignedCount;
-        string uname;
+        static string uname = "X";
         string usergroup;
 
         private readonly IGoogleManager _googleManager;
@@ -29,36 +29,37 @@ namespace ResponderApp
 
         //public ObservableCollection<Car> Items { get; set; }
         public ObservableCollection<api> Items { get; set; }
+        public ObservableCollection<api> apiItem { get; set; }
+
+        public string[] validEmails = { "ebash4cast@googlemail.com", "eatosan@gmail.com", "rep@gmail.com" };
 
         public homeViewModel()
         {
-            MessagingCenter.Subscribe<Page, string>(this, "xxx", (sender, values) =>
+
+            MessagingCenter.Subscribe<Page, string[]>(this, "googleAuth", (sender, values) =>
             {
-                uname = values;
+                uname = values[2];
+                if (validEmails.Contains("ebash4cast@googlemail.com"))
+                { 
+                    load("A");     
+                }
+                else { }
+               
             });
 
-            load();
+           
         }
 
-        //public ObservableCollection<api> Items { get; set; }
-        public async void load()
+ 
+        public async void load(string group)
         {
-            // MessagingCenter.Unsubscribe<Page, string>(this, "usergroup");
-
-            if (uname == "ebash4cast@gmail.com")
-            {
-                usergroup = "A";
-            }
-            else
-            {
-                usergroup = "B";
-            }
-
+            //get the group of the user from the email
+            
             List<api> trackData = new List<api>();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://denceapp.somee.com/api/Incidence/GetAllAssignedTaskByGroup/");
-                var responseTask = client.GetAsync(usergroup);
+                var responseTask = client.GetAsync(group);
 
                 responseTask.Wait();
 
@@ -68,92 +69,95 @@ namespace ResponderApp
                     string readTask = await res.Content.ReadAsStringAsync();
                     var data = JsonConvert.DeserializeObject<ObservableCollection<api>>(readTask);
                     assignedCount = data.Count().ToString();
-                    Items = new ObservableCollection<api>(data);
-                   
+                    apiItem = new ObservableCollection<api>(data);
                 }
 
-                MessagingCenter.Send<object, string>(this, "assignedPassed", assignedCount);
+                MessagingCenter.Send<object, ObservableCollection<api>>(this, "listData", Items);
 
+                MessagingCenter.Send<object, string>(this, "assignedPassed", assignedCount);
             }
+
+            Items = new ObservableCollection<api>(apiItem);
         }
+
 
         //public CarsViewModel()
         //{
 
-            //    Here you can have your data form db or something else,
-            //     some data that you already have to put in the list
-            //    Items = new ObservableCollection<Car>() {
-            //        new Car()
-            //        {
-            //            CarID = 1,
-            //            Make = "Power Outage",
-            //            YearOfModel = 2021
-            //        },
-            //          new Car()
-            //        {
-            //            CarID = 2,
-            //            Make = "Fault",
-            //            YearOfModel = 2012
-            //        },
-            //           new Car()
-            //        {
-            //            CarID = 2,
-            //            Make = "Whistle",
-            //            YearOfModel = 2100
-            //        },
-            //            new Car()
-            //        {
-            //            CarID = 2,
-            //            Make = "Fault",
-            //            YearOfModel = 2012
-            //        },
-            //             new Car()
-            //        {
-            //            CarID = 2,
-            //            Make = "Fault",
-            //            YearOfModel = 2012
-            //        },
-            //                new Car()
-            //        {
-            //            CarID = 2,
-            //            Make = "Complain",
-            //            YearOfModel = 2012
-            //        },
+        //    Here you can have your data form db or something else,
+        //     some data that you already have to put in the list
+        //    Items = new ObservableCollection<Car>() {
+        //        new Car()
+        //        {
+        //            CarID = 1,
+        //            Make = "Power Outage",
+        //            YearOfModel = 2021
+        //        },
+        //          new Car()
+        //        {
+        //            CarID = 2,
+        //            Make = "Fault",
+        //            YearOfModel = 2012
+        //        },
+        //           new Car()
+        //        {
+        //            CarID = 2,
+        //            Make = "Whistle",
+        //            YearOfModel = 2100
+        //        },
+        //            new Car()
+        //        {
+        //            CarID = 2,
+        //            Make = "Fault",
+        //            YearOfModel = 2012
+        //        },
+        //             new Car()
+        //        {
+        //            CarID = 2,
+        //            Make = "Fault",
+        //            YearOfModel = 2012
+        //        },
+        //                new Car()
+        //        {
+        //            CarID = 2,
+        //            Make = "Complain",
+        //            YearOfModel = 2012
+        //        },
 
-            //          new Car()
-            //        {
-            //            CarID = 2,
-            //            Make = "Fault",
-            //            YearOfModel = 2007
-            //        },
+        //          new Car()
+        //        {
+        //            CarID = 2,
+        //            Make = "Fault",
+        //            YearOfModel = 2007
+        //        },
 
-            //         new Car()
-            //        {
-            //            CarID = 2,
-            //            Make = "Complain",
-            //            YearOfModel = 2012
-            //        },
+        //         new Car()
+        //        {
+        //            CarID = 2,
+        //            Make = "Complain",
+        //            YearOfModel = 2012
+        //        },
 
-            //         new Car()
-            //        {
-            //            CarID = 2,
-            //            Make = "Complain",
-            //            YearOfModel = 221
-            //        },
+        //         new Car()
+        //        {
+        //            CarID = 2,
+        //            Make = "Complain",
+        //            YearOfModel = 221
+        //        },
 
-            //        new Car()
-            //        {
-            //            CarID = 2,
-            //            Make = "Whistle",
-            //            YearOfModel = 2012
-            //        }
+        //        new Car()
+        //        {
+        //            CarID = 2,
+        //            Make = "Whistle",
+        //            YearOfModel = 2012
+        //        }
 
 
-            //    };
+        //    };
 
-            //}
+        //}
 
-            //Messaging 
+        //Messaging 
 
         //Messaging Other Values
 

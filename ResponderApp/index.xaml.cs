@@ -83,7 +83,7 @@ namespace ResponderApp
 
         public async void loadDataFromDb()
         {
-            List<api> trackData = new List<api>();
+
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://denceapp.somee.com/api/Incidence/GetAllAssignedTaskByGroup/");

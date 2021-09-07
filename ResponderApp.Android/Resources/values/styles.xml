@@ -20,6 +20,7 @@
     <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
     <item name="windowActionModeOverlay">true</item>
+    <item name="android:colorActivatedHighlight">#96BCE3</item>
 
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
@@ -30,10 +31,13 @@
     <item name="android:windowContentOverlay">@null</item>
     <item name="android:windowActionBar">true</item>
     <item name="android:colorPrimary">#2196F3</item>
+    <item name="android:colorActivatedHighlight">#96BCE3</item>
   </style>
 
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#FF4081</item>
   </style>
+  
+    
 
 </resources>

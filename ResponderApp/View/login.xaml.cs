@@ -21,22 +21,21 @@ namespace ResponderApp.View
         {
             _googleManager = DependencyService.Get<IGoogleManager>();
             InitializeComponent();
+
+           
         }
 
         async private void OnTapped(object sender, EventArgs e)
         {
 
-            //string[] values = { "dfdfd", "dfdfd", "dfdfdf" };
-
-
-
-           
-
-            //_googleManager = DependencyService.Get<IGoogleManager>();
+            
+            activity.IsEnabled = true;
+            activity.IsRunning = true;
+            activity.IsVisible = true;
+            
             CheckUserLoggedIn();
 
-            //await Navigation.PushAsync(new MainPage());
-            // _googleManager.Login(OnLoginComplete);
+         
         }
 
         private void CheckUserLoggedIn()
@@ -61,11 +60,15 @@ namespace ResponderApp.View
                 GoogleUser = googleUser;
                 string[] values = { googleUser.Name, googleUser.Picture.ToString(), googleUser.Email };
 
-                MessagingCenter.Send<Page, string[]>(this, "googleAuth", values);
+                MessagingCenter.Send<Page, string[]>(this, "googleAuth1", values);
 
                 await Navigation.PushAsync(new menutab(googleUser.Name, googleUser.Picture, googleUser.Email));
 
                 IsLogedIn = true;
+                activity.IsEnabled = false;
+                activity.IsRunning = false;
+                activity.IsVisible = false;
+
             }
             else
             {

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="ResponderApp.View.Board" BackgroundColor="#1976D2">
+
+    <Grid RowDefinitions="70,auto,auto">
+
+        <StackLayout Padding="35,40,30,30">
+            <Label Text="My Task Board" TextColor="White" FontSize="20" FontFamily="NormalFont"/>
+        </StackLayout>
+
+        
+        <StackLayout Grid.Row="1" Padding="30">
+            <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*" RowSpacing="20" ColumnSpacing="10">
+                  
+                <pancakeview:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="White" Padding="20" CornerRadius="10">
+                    <Grid RowDefinitions="*,auto,*">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="progress" WidthRequest="30" HeightRequest="30"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1">
+                            <Label Text="310" TextColor="#4D4D4D" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontFamily="LightFont"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="Task in progress" FontSize="16" FontFamily="NormalFont"></Label>
+                        </StackLayout>
+                    </Grid>
+                </pancakeview:PancakeView>
+
+                <pancakeview:PancakeView Grid.Row="0" Grid.Column="0" BackgroundColor="White" Padding="20" CornerRadius="10">
+                    <Grid RowDefinitions="*,auto,*">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="completed" WidthRequest="30" HeightRequest="30"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1">
+                            <Label Text="10" TextColor="#4D4D4D" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontFamily="LightFont"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="Completed Tasks" FontSize="14" FontFamily="NormalFont"></Label>
+                        </StackLayout>
+                    </Grid>
+                </pancakeview:PancakeView>
+
+                <pancakeview:PancakeView Grid.Row="1" Grid.Column="1" BackgroundColor="White" Padding="20" CornerRadius="10">
+                    <Grid RowDefinitions="*,auto,*">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="pending" WidthRequest="30" HeightRequest="30"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1">
+                            <Label Text="120" TextColor="#4D4D4D" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontFamily="LightFont"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="Assigned Tasks" FontSize="14" FontFamily="NormalFont"></Label>
+                        </StackLayout>
+                    </Grid>
+                </pancakeview:PancakeView>
+
+                <pancakeview:PancakeView Grid.Row="1" Grid.Column="0" BackgroundColor="White" Padding="20,30,20,30" CornerRadius="10">
+                    <Grid RowDefinitions="*,auto,*">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="construction" WidthRequest="30" HeightRequest="30"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1">
+                            <Label Text="310" TextColor="#4D4D4D" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontFamily="LightFont"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="Ongoing Tasks" FontSize="14" FontFamily="NormalFont"></Label>
+                        </StackLayout>
+                    </Grid>
+                </pancakeview:PancakeView>
+
+                <!--<pancakeview:PancakeView Grid.Row="2" Grid.Column="1" BackgroundColor="Black">
+                    <Label Text="Hello"/>
+                </pancakeview:PancakeView>
+
+                <pancakeview:PancakeView Grid.Row="2" Grid.Column="0" BackgroundColor="Black">
+                    <Label Text="Hello"/>
+                </pancakeview:PancakeView>-->
+                
+            </Grid>
+        </StackLayout>
+
+        <StackLayout Grid.Row="2" BackgroundColor="Red">
+        
+        </StackLayout>
+    </Grid>
+    
+</ContentPage>

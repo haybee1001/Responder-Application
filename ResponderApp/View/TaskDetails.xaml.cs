@@ -14,18 +14,25 @@ namespace ResponderApp.View
     public partial class TaskDetails : ContentPage
     {
         public Command SendCommand { get; }
-        public TaskDetails(string fault)
+
+        double latt, lngg;
+        public TaskDetails(string fault, string lat, string lng, string reportername, string incidenceId)
         {
             InitializeComponent();
-            mylabel1.Text = fault;
+            latt = double.Parse(lat);
+            lngg = double.Parse(lng);
+            lblIncidenceID.Text = incidenceId;
+
+            GetAddressFromCordinate(latt, lngg, reportername);
 
             Pin pinTokyo = new Pin()
             {
                 Type = PinType.Place,
                 Label = "Location",
                 Address = "sdsdsds",
-              
-                Position = new Position(6.44231841433793, 7.48507842421532),
+
+                // Position = new Position(6.44231841433793, 7.48507842421532),
+                Position = new Position(latt,lngg),
                 Tag = "Id_Tokyo"
             };
 
@@ -34,17 +41,51 @@ namespace ResponderApp.View
 
         }
 
+        public async void GetAddressFromCordinate(double _lat, double _lng, string reportername)
+        {
+            try
+            {
+                var lat = _lat;
+                var lon = _lng;
+
+                var placemarks = await Geocoding.GetPlacemarksAsync(lat, lon);
+
+                var placemark = placemarks?.FirstOrDefault();
+                if (placemark != null)
+                {
+                    var geocodeAddress = placemark.SubAdminArea + ", " + placemark.SubLocality;
+
+                    Console.WriteLine(geocodeAddress);
+
+                    lblAddress.Text = geocodeAddress;
+                    lblReporterName.Text = reportername;
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Handle exception that may have occurred in geocoding
+            }
+        }
 
         public async void navigateClick()
         {
+        }
+
+        private void StartWorkTapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Startwork());
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await Task.Delay(800);
 
-            var location = new Location(6.4648580000,7.5335300000);
-            var options = new MapLaunchOptions {Name = "Disney World" };
+            var location = new Location(latt,lngg);
+            var options = new MapLaunchOptions {Name = "Location Name" };
             //Launching Maps
 
             await Xamarin.Essentials.Map.OpenAsync(location, options);

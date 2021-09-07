@@ -28,67 +28,39 @@ namespace ResponderApp.View
         GoogleUser GoogleUser = new GoogleUser();
         public bool IsLogedIn { get; set; }
 
-        //public ObservableCollection<Car> Items { get; set; }
+        static string group = "";
+
         public ObservableCollection<api> Items { get; set; }
 
         public home()
         {
 
             InitializeComponent();
-
-            MessagingCenter.Subscribe<Page, string[]>(this, "googleAuth", (sender, values) => {
+           
+            MessagingCenter.Subscribe<Page, string[]>(this, "googleAuth", (sender, values) =>
+            {
                 lblUser.Text = values[0];
                 profilePhoto.Source = values[1];
                 useremail = values[2];
-                if(useremail.Equals("ebash4cast@googlemail.com"))
-                { loadDataFromDb("A"); } else { loadDataFromDb("B"); }
-                
+                if (useremail.Equals("ebash4cast@googlemail.com"))
+                {group = "A"; 
+                    loadDataFromDb("A"); }
+                else {  }
+
             });
 
+            BindingContext = new homeViewModel();
 
-            //MessagingCenter.Subscribe<Page, string>(this, "Hi", (sender, values) =>
+            //MessagingCenter.Subscribe<object, ObservableCollection<api>>(this, "listData", (sender, arg) =>
             //{
-            //    lblAssigned.Text = values;
-
-            //    if(values == "Bobo Dey here oo")
-            //    {
-            //        loadDataFromDb();
-            //    }
-            //    else
-            //    {
-            //        DisplayAlert("Hello", "Conflict of Interest", "Close");
-            //    }
-
+            //    mylistview.ItemsSource = arg;
             //});
 
-            string data = lblAssigned.Text;
-
-
-
-            //lblAssigned.Text = data;
-
-            //MessagingCenter.Subscribe<Page, string>(this, "xxx", (sender, values) =>
-            //{
-            //    uname = values;
+            //MessagingCenter.Subscribe<object, string>(this, "assignedPassed", (sender, arg) =>{
+            //    lblAssigned.Text = arg;
             //});
-
-
-            //Check for user email
-            //string[] emailAddress = { "ea@enugudisco.com", "bc@enugudisco.com" };
-
-
-            //loadDataFromDb();
-
-            Console.WriteLine("The value is:" + uname);
-
-            //BindingContext = new homeViewModel();
-
-           // touch_command = new Command(() => clickCommand());
-
-           // MessagingCenter.Subscribe<object, string>(this, "assignedPassed", (sender, values) => { lblAssigned.Text = values.ToString(); });
 
         }
-
 
 
         public async void loadDataFromDb(string grp)
@@ -111,7 +83,11 @@ namespace ResponderApp.View
                     Items = new ObservableCollection<api>(data);
 
                     mylistview.ItemsSource = Items;
-                   
+
+                }
+                else 
+                {
+                    await DisplayAlert("Hello", "There was a connection issue", "close");
                 }
 
                 lblAssigned.Text = assignedCount;
@@ -127,18 +103,29 @@ namespace ResponderApp.View
 
         async private void OnTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TaskList());
+            //await Navigation.PushAsync(new TaskList());
         }
 
         private async void RefreshView_Refreshing(object sender, EventArgs e)
         {
             ///await Task.Delay(3000);
 
-            BindingContext = new homeViewModel();
+            //BindingContext = new homeViewModel();
+
+            //InitializeComponent();
+
+            loadDataFromDb(group);
 
             listRefresher.IsRefreshing = false;
         }
 
-       
+        async private void mylistview_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var myselectedItem = e.Item as api;
+
+            await Navigation.PushAsync(new TaskDetails(myselectedItem.incidence_id, myselectedItem.lat_y, myselectedItem.Long_x, myselectedItem.ReporterName, myselectedItem.incidence_id));
+
+            ((ListView)sender).SelectedItem = null;
+        }
     }
 }

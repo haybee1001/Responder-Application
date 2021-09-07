@@ -45,15 +45,14 @@
 
                 <StackLayout>
                     <SearchBar Margin="30,10,30,0" x:Name="MainsearchBar" TextChanged="searchbar_textchanged"></SearchBar>
-                    <ListView ItemsSource="{Binding Items}" x:Name="CarsListView" 
-                  CachingStrategy="RecycleElement" ItemTapped="CarsListView_ItemTapped"
-                  RowHeight="80" HorizontalScrollBarVisibility="Always" Margin="20">
+                    <ListView ItemsSource="{Binding Items}" x:Name="generalList" CachingStrategy="RecycleElement" ItemTapped="CarsListView_ItemTapped" 
+                              RowHeight="80" HorizontalScrollBarVisibility="Always" Margin="20" >
 
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
 
-                                    <pancakeview:PancakeView BackgroundColor="White" Margin="10,5,10,0"  Padding="10" CornerRadius="10" Grid.Row="1" >
+                                    <pancakeview:PancakeView BackgroundColor="White"  Margin="5,2,5,2"  Padding="10,15,10,10" CornerRadius="0" Grid.Row="1" >
                                         <!--<pancakeview:PancakeView.Shadow>
                                         <pancakeview:DropShadow Color="Red"/>
                                     </pancakeview:PancakeView.Shadow>-->
@@ -61,16 +60,14 @@
                                         <Grid RowDefinitions="Auto,Auto,Auto">
                                             <Grid ColumnDefinitions="Auto,Auto,*">
                                                 <Image Source="hollow.png" WidthRequest="10" HeightRequest="10"/>
-                                                <Label Text="{Binding AssignedBy}" Grid.Column="1" FontSize="16" FontAttributes="Bold" TextColor="Black"></Label>
-                                                <Label Text="{Binding Category}" Grid.Column="2" HorizontalOptions="End"></Label>
+                                                <Label Text="{Binding AssignedBy}" Grid.Column="1" FontSize="14" FontAttributes="Bold" FontFamily="MediumFont" TextColor="Black"></Label>
+                                                <Label Text="{Binding Category}" Grid.Column="2" HorizontalOptions="End" FontFamily="NormalFont" FontSize="12"></Label>
                                             </Grid>
                                             <Grid  Grid.Row="1" Padding="20,0,0,0">
-                                                <Label Text="No Supply at GRA"></Label>
-                                                <Label Text="21-09-2021" Grid.Column="1" HorizontalOptions="End"></Label>
+                                                <Label Text="No Supply at GRA" FontSize="12" FontFamily="NormalFont"></Label>
+                                                <Label Text="21-09-2021" Grid.Column="1" HorizontalOptions="End" FontSize="12" FontFamily="NormalFont"></Label>
                                             </Grid>
                                         </Grid>
-
-
                                     </pancakeview:PancakeView>
 
                                 </ViewCell>

@@ -19,12 +19,12 @@ namespace ResponderApp
             MainPage = new NavigationPage(new login());
             // MainPage = new TaskDetails("Fault");
             //MainPage = new TaskList();
-           // MainPage = new TrialPage();
+            //MainPage = new Startwork();
         }
 
         protected override void OnStart()
         {
-
+            
         }
 
         protected override void OnSleep()

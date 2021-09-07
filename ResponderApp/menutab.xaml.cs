@@ -18,20 +18,16 @@ namespace ResponderApp
         {
             InitializeComponent();
 
-           // BindingContext = this;
-
-            var page = new home();
+            // BindingContext = this;
 
             string[] values = { menu, url.ToString(), email};
 
             MessagingCenter.Send<Page, string[]>(this, "googleAuth", values);
 
-            MessagingCenter.Send<Page, string>(this, "Hi", "Bobo Dey here ooo");
+            MessagingCenter.Send<Page, string>(this, "Hi", "A");
 
-           // Navigation.PushAsync(page);
+                      
 
-
-           // Navigation.PopAsync();
         }
     }
 }
